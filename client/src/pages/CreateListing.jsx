@@ -9,12 +9,14 @@ import { IoIosImages } from "react-icons/io";
 import { useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from "react-redux";
+
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer"
 
 const CreateListing = () => {
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
+  
 
   /* LOCATION */
   const [formLocation, setFormLocation] = useState({
@@ -93,8 +95,10 @@ const CreateListing = () => {
     });
   };
 
-  const creatorId = useSelector((state) => state.user._id);
+  const user = useSelector((state) => state.user);
+console.log("User state:", user);
 
+const creatorId = user?._id;
   const navigate = useNavigate();
 
   const handlePost = async (e) => {
